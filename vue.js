@@ -6,6 +6,8 @@ const App = {
   data() {
     return {
       activeIndex: 0, // то, что позволяет определить текущий активный шаг
+      nextButton: 'Вперед',
+      finished: false,
       steps: [
         {
           title: 'Основы',
@@ -54,6 +56,13 @@ const App = {
     // 1. текущий выбранный шаг
     // 2. выключена ли кнопка назад
     // 3. находимся ли мы на последнем шаге
+  },
+  watch: {
+    activeIndex() {
+      this.activeIndex === this.steps.length - 1
+        ? (this.nextButton = 'Завершить')
+        : (this.nextButton = 'Вперед')
+    },
   },
 }
 
