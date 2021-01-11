@@ -44,7 +44,10 @@
             <button
               v-if="!finished"
               class="btn primary"
-              @click="activeIndex < steps.length - 1  ? activeIndex++ : finished = !finished"
+              @click="
+              activeIndex < steps.length - 1  ? activeIndex++ : (finished = !finished),
+              activeIndex === steps.length - 1 ? (nextButton = 'Завершить'): (nextButton = 'Вперед')
+              "
             >
               {{nextButton}}
             </button>

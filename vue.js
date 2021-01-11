@@ -57,13 +57,6 @@ const App = {
     // 2. выключена ли кнопка назад
     // 3. находимся ли мы на последнем шаге
   },
-  watch: {
-    activeIndex() {
-      this.activeIndex === this.steps.length - 1
-        ? (this.nextButton = 'Завершить')
-        : (this.nextButton = 'Вперед')
-    },
-  },
 }
 
 Vue.createApp(App).mount('#app')
