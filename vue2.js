@@ -40,15 +40,38 @@ const App = {
   methods: {
     prev() {
       // когда нажимаем кнопку назад
+      this.activeIndex > 0 ? this.activeIndex-- : this.activeIndex
+      this.nextOrFinish()
+    },
+    next() {
+      // когда нажимаем кнопку вперёд
+      this.activeIndex < this.steps.length - 1
+        ? this.activeIndex++
+        : (this.finished = !this.finished)
+      this.nextOrFinish()
     },
     reset() {
       // начать заново
+      this.activeIndex = 0
+      this.nextButton = 'Вперед'
+      this.finished = false
     },
-    nextOfFinish() {
+    nextOrFinish() {
       // кнопка вперед или закончить
+      this.activeIndex === this.steps.length - 1
+        ? (this.nextButton = 'Завершить')
+        : (this.nextButton = 'Вперед')
     },
     setActive(idx) {
       // когда нажимаем на определенный шаг
+      this.activeIndex = idx
+      this.nextOrFinish()
+    },
+    classObject(idx) {
+      return {
+        active: idx === this.activeIndex,
+        done: idx <= this.activeIndex,
+      }
     },
   },
   computed: {
@@ -56,6 +79,12 @@ const App = {
     // 1. текущий выбранный шаг
     // 2. выключена ли кнопка назад
     // 3. находимся ли мы на последнем шаге
+    isBackButton() {
+      return !this.activeIndex
+    },
+    isLastStep() {
+      return this.activeIndex === this.steps.length - 1
+    },
   },
 }
 

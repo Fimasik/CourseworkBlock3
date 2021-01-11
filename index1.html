@@ -1,3 +1,5 @@
+<!-- Версия 1. Без использования методов из .js файла -->
+
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -56,7 +58,7 @@
               v-if="finished"
               class="btn"
               hover
-              @click="activeIndex = 0, finished = !finished"
+              @click="activeIndex = 0, finished = !finished, nextButton = 'Вперед'"
             >
               Начать
             </button>
@@ -66,6 +68,6 @@
     </div>
 
     <script src="https://unpkg.com/vue@next"></script>
-    <script src="vue.js"></script>
+    <script src="vue1.js"></script>
   </body>
 </html>
