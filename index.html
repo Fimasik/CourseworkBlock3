@@ -28,7 +28,13 @@
               v-for="(item, index) in steps"
               :key="item.title"
             >
-              <span @click="activeIndex = index">{{index + 1}}</span>
+              <span
+                @click="
+              activeIndex = index,
+              activeIndex === steps.length - 1 ? (nextButton = 'Завершить'): (nextButton = 'Вперед')
+              "
+                >{{index + 1}}</span
+              >
               {{item.title}}
             </li>
           </ul>
@@ -54,6 +60,7 @@
             <button
               v-if="finished"
               class="btn"
+              hover
               @click="activeIndex = 0, finished = !finished"
             >
               Начать
