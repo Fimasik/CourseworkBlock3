@@ -58,9 +58,6 @@ const App = {
     },
     nextOrFinish() {
       // кнопка вперед или закончить
-      this.activeIndex === this.steps.length - 1
-        ? (this.nextButton = 'Завершить')
-        : (this.nextButton = 'Вперед')
     },
     setActive(idx) {
       // когда нажимаем на определенный шаг
@@ -84,6 +81,13 @@ const App = {
     },
     isLastStep() {
       return this.activeIndex === this.steps.length - 1
+    },
+    changeButton() {
+      if (this.activeIndex === this.steps.length - 1) {
+        return (this.nextButton = 'Завершить')
+      } else {
+        return (this.nextButton = 'Вперед')
+      }
     },
   },
 }
